@@ -7,7 +7,7 @@ Scott is a co-founder of GitHub and founded [git-scm](https://git-scm.com/).
 
 ## Git Config Tips
 
-`.gitconfig` adds flexibility when working on different projects. Adding a non-global configuration can smooth-up the workflow.
+`.gitconfig` adds flexibility when working on different projects. Adding a non-global configuration file in the root project directory can smoothen up the workflow.
 ```
 [user]
   email = example@git.edu
