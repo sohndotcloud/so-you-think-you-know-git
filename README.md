@@ -7,7 +7,7 @@ Scott is a co-founder of GitHub and founded git-scm of [git-scm](https://git-scm
 
 ## Git Config Tips
 
-`.gitconfig` adds flexibility when working on different projects. Adding a non-global configuration can smooth up the workflow.
+`.gitconfig` adds flexibility when working on different projects. Adding a non-global configuration can smooth-up the workflow.
 ```
 [user]
   email = example@git.edu
@@ -25,9 +25,15 @@ To add a little more complexity, IncludeIf sets up the logic for further customi
 ## Useful Commands
 
 |  Command  |  Description  |
-| :---:   | :---: |
-|  `git blame -L 10,16 path/to/file`  |  Description Here  |
-
+| --------  | :------ |
+|  `git blame -L 10,16 path/to/file`  |  Git blame with start and end line numbers to the file  |
+|  `git log -L 10,16 path/to/file`  |  Git log with start and end line numbers to the file  |
+|  `git blame -L :example:path/to/file`|  Git blame using where 'example' is found in the file as the starting line |
+| `git blame -w` | Git blame ignore whitespace |
+| `git blame -w -C` | AND detect lines moved or copied in the same commit  |
+| `git blame -w -C -C` | OR the commit that created the file |
+| `git blame -w -C -C -C` | OR any commit at all |
+| `git blame -w` | Git blame ignore whitespace |
 ## Global Configurations
 
 ```
