@@ -4,11 +4,25 @@ A list of interesting git commands from Scott Chacon from his [FOSDEM 2024 talk 
 
 Scott is a co-founder of GitHub and founded [git-scm](https://git-scm.com/).
 
+Table of contents
+=================
+<!--ts-->
+   * [Git Config Tips](#git-config-tips)
+    * [Conditional](#conditional)
+  * [Useful Commands](#useful-commands)
+    * [Common Commands](#common-commands)
+    * [New Commands](#new-commands)
+      * [Git Branch Column](#git-branch-column)
+      * [Git Push Force with Lease](#git-push-force-with-lease)
+      * [Signing Commits](#signing-commits)
+      * [Git Prefetching](#git-prefetching)
+   * [Default Global Configurations](#default-global-configurations)
+<!--te-->
 
 ## Git Config Tips
 
 `.gitconfig` adds flexibility when working on different projects. Adding a non-global configuration file in the root project directory can smoothen up the workflow.
-```
+```gitconfig
 [user]
   email = example@git.edu
 ```
@@ -16,7 +30,7 @@ This config can also look like this in the command-line `git config user.email e
 
 ### Conditional
 To add a little more complexity, IncludeIf sets up the logic for further customization.
-```
+```gitconfig
 # The config can be loaded based on current path
 [IncludeIf "gitdir:~/projects/work/"]
     path = ~/projects/work/.gitconfig
@@ -43,7 +57,7 @@ To add a little more complexity, IncludeIf sets up the logic for further customi
 
 #### Git Branch Column
 `git branch` has a new formatting option called column. It changes the default layout of the branch list. This combined with branch sorting by last commit dates results in a current and clean layout.
-```
+```bash
 git config --global column.ui auto
 git config --global branch.sort -committerdate
 git branch
