@@ -4,10 +4,10 @@ A list of interesting git commands from Scott Chacon from his [FOSDEM 2024 talk 
 
 Scott is a co-founder of GitHub and founded [git-scm](https://git-scm.com/).
 
-Table of contents
-=================
+## Table of contents
+
 <!--ts-->
-   * [Git Config Tips](#git-config-tips)
+  * [Git Config Tips](#git-config-tips)
     * [Conditional](#conditional)
   * [Useful Commands](#useful-commands)
     * [Common Commands](#common-commands)
