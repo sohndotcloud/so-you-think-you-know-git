@@ -2,7 +2,7 @@
 
 A list of interesting git commands from Scott Chacon from his [FOSDEM 2024 talk on Git](https://www.youtube.com/watch?v=aolI_Rz0ZqY)
 
-Scott is a co-founder of GitHub and founded git-scm of [git-scm](https://git-scm.com/) site.
+Scott is a co-founder of GitHub and founded [git-scm](https://git-scm.com/).
 
 
 ## Git Config Tips
