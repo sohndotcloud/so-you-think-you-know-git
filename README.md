@@ -1,6 +1,6 @@
 # So You Think You Know Git
 
-A list of interesting git commands from Scott Chacon from his [FOSDEM 2024 talk on Git](https://www.youtube.com/watch?v=aolI_Rz0ZqY)
+A list of interesting git commands from Scott Chacon from his FOSDEM 2024 talk on Git: [Part 1](https://www.youtube.com/watch?v=aolI_Rz0ZqY), [Part 2](https://www.youtube.com/watch?v=Md44rcw13k4)
 
 Scott is a co-founder of GitHub and founded [git-scm](https://git-scm.com/).
 
