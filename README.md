@@ -67,7 +67,7 @@ OR
 git branch --column --sort=-committerdate
 ```
 
-#### Git Push Force with Lease
+#### Git Push Force with Lease (Avoids Merge Conflicts)
 `git push --force-with-lease` is a new addition that adds a ref check and compares the remote version to the local version and rejects the force push when conflicts are detected.
 
 
