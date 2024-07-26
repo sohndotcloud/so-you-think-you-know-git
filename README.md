@@ -31,7 +31,7 @@ This config can also look like this in the command-line `git config user.email e
 ### Conditional
 To add a little more complexity, IncludeIf sets up the logic for further customization.
 ```gitconfig
-# The config can be loaded based on current path
+# The config can be loaded based on working path
 [IncludeIf "gitdir:~/projects/work/"]
     path = ~/projects/work/.gitconfig
 ```
@@ -87,15 +87,15 @@ To enable maintenance on a local repo
 git maintenance start
 ```
 
-The command updates .gitconfig to add the lines below.
+The command above updates .gitconfig to add the lines below.
 ```
 [maintenance]
     auto = false
     strategy = incremental
 ```
-This adds a cron job to the repository to run a task every hour.
+This will add a cron job to the repository to prefetch every hour.
 
-The prefetched references will not be loaded into the project until the merge is done.
+The prefetched references will not be loaded into the project until . 
 To validate that the prefetch is working
 `git for-each-ref | grep prefetch`
 
@@ -115,7 +115,7 @@ git config --global fetch.writeCommitGraph true
 ```
 
 ## Default Global Configurations
-These configurations are examples of commands that are worth running by default or useful global config.
+These configurations are examples of commands that are worth running by default or useful global configs.
 
 ```
 # Reuse Recorded Resolution
