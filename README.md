@@ -67,10 +67,10 @@ git branch --column --sort=-committerdate       #2
 
 #### Safe Version of Force Push
 ```bash
-# Call isn't completed when there's a conflict
+# This stops any changes overwriting the upstream repository
 git push --force-with-lease
 ```
-If upstream change history is different, then the push is stopped.
+
 
 
 #### Commits with SSH Key Signatures
@@ -124,25 +124,25 @@ git config --global fetch.writeCommitGraph true
 ### Useful Default Global Configurations
 ```bash
 # Reuse Recorded Resolution
-# Git will remember how to resolve merge conflicts.
+# Git will remember how to resolve similar merge conflicts
 git config --global rerere.enabled true
 
-# Automatically creates upstream branches
+# Repository creates a new branch by default on push
 git config --global push.default current
 
-# Stashes all changes
+# Add an alias to stash all changes
 git config --global alias.staash 'stash --all'
 
-# 
+# Run a command as a git alias
 git config --global alias.[alias] ![command]
 ```
 
 ```bash
+# .gitconfig
 [alias]
     staash = 'stash --all'
 [rerere]
     enabled = true
 [push]
     default = current
-    
 ```
