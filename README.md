@@ -11,10 +11,12 @@ Highlights of git shortcuts by Scott Chacon (YouTube)/More Available in Videos: 
   * [Useful Commands](#useful-commands)
     * [Common Commands](#common-commands)
     * [New Commands](#new-commands)
-      * [Git Branch Column](#git-branch-column)
-      * [Git Push Force with Lease](#git-push-force-with-lease)
-      * [Signing Commits](#signing-commits)
+      * [Show Branches in Columns](#show-branches-in-columns)
+      * [Safe Version of Force Push](#safe-version-of-force-push)
+      * [Restore](#restore)
+      * [Commits with SSH Key Signatures](#commits-with-ssh-key-signatures)
       * [Git Prefetching](#git-prefetching)
+      * [Visualizing the Commit Tree](#visualizing-the-commit-tree)
    * [Default Global Configurations](#default-global-configurations)
 <!--te-->
 
@@ -120,7 +122,7 @@ git for-each-ref | grep prefetch
 |prefetch | hourly|
 |commit-graph | hourly|
 
-#### Visualizing the commit tree
+#### Visualizing the Commit Tree
 ```
 git log --graph --oneline -10 >/dev/null
 ```
