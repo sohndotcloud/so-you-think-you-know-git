@@ -1,8 +1,7 @@
 # So You Think You Know Git
 
-A list of interesting git commands from Scott Chacon from his FOSDEM 2024 talk on Git: [Part 1](https://www.youtube.com/watch?v=aolI_Rz0ZqY), [Part 2](https://www.youtube.com/watch?v=Md44rcw13k4)
+Highlights of git shortcuts by Scott Chacon (YouTube)/More Available in Videos: [Part 1](https://www.youtube.com/watch?v=aolI_Rz0ZqY), [Part 2](https://www.youtube.com/watch?v=Md44rcw13k4)
 
-Scott is a co-founder of GitHub and founded [git-scm](https://git-scm.com/).
 
 ## Table of contents
 
@@ -21,15 +20,18 @@ Scott is a co-founder of GitHub and founded [git-scm](https://git-scm.com/).
 
 ## Git Config Tips
 
-`.gitconfig` adds flexibility when working on different projects. Adding a non-global configuration file in the root project directory can smoothen up the workflow.
+`.gitconfig`
+
+
 ```gitconfig
 [user]
   email = example@git.edu
 ```
-This config can also look like this in the command-line `git config user.email example@git.edu`. The command updates the user in the local gitconfig file.
+The file looks simple: `git config user.email example@git.edu`. That is a command to modify or create the git config file at the starting git directory.
+
 
 ### Conditional
-To add a little more complexity, IncludeIf sets up the logic for further customization.
+
 ```gitconfig
 # The config can be loaded based on working path
 [IncludeIf "gitdir:~/projects/work/"]
@@ -41,71 +43,76 @@ To add a little more complexity, IncludeIf sets up the logic for further customi
 ### Common Commands
 |  Command  |  Description  |
 | --------  | :------ |
-| `git blame -L 10,16 path/to/file` |  Git blame with start and end line numbers to the file  |
-| `git blame -L :example:path/to/file`|  Git blame using where 'example' is found in the file as the starting line |
-| `git blame -w` | Git blame ignore whitespace |
-| `git blame -w -C` | AND detect lines moved or copied in the same commit  |
-| `git blame -w -C -C` | OR the commit that created the file |
-| `git blame -w -C -C -C` | OR any commit at all |
-| `git log -p -S --debug` | Search for git logs containing String `--debug` |
-| `git log -L 10,16 path/to/file` |  Git log with start and end line numbers to the file  |
-| `git reflog` | Log of all the changes to current state of repo for possible reverting |
-| `git diff --word-diff` | Shows changes by words instead of lines |
-| `git blame -w` | Git blame ignore whitespace |
+| `git blame -L :example:path/to/file`|  Shows commit author for line number of `:example:` |
+| `git blame -w` | Take away changes to spaces in the file |
+| `git log -w` | Take away changes to spaces in the logs|
+| `git log -p -S --debug` | Reduces the list to commits with message `--debug` |
+| `git diff --word-diff` | Shows changes per word instead of lines |
 
 ### New Commands
 
-#### Git Branch Column
-`git branch` has a new formatting option called column. It changes the default layout of the branch list. This combined with branch sorting by last commit dates results in a current and clean layout.
+#### Show Branches in Columns
+
 ```bash
-git config --global column.ui auto
-git config --global branch.sort -committerdate
-git branch
+# Saves the setting
+git config --global column.ui auto              #1
+git config --global branch.sort -committerdate  
+git branch 
 ```
 OR
-```
-git branch --column --sort=-committerdate
+```bash
+# Optional way
+git branch --column --sort=-committerdate       #2
 ```
 
-#### Git Push Force with Lease (Avoids Merge Conflicts)
-`git push --force-with-lease` is a new addition that adds a ref check and compares the remote version to the local version and rejects the force push when conflicts are detected.
-
-
-#### Signing Commits
+#### Safe Version of Force Push
+```bash
+# Call isn't completed when there's a conflict
+git push --force-with-lease
 ```
+If upstream change history is different, then the push is stopped.
+
+
+#### Commits with SSH Key Signatures
+```bash
+# create a new key with ssh-keygen
 git config gpg.format ssh
 git config user.signingkey ~/.ssh/
 ```
-Git has SSH signing integrated which gives a layer of protection for repos. Repositories like GitHub can validate the signature with a copy uploaded in settings.
+Remember to add the public key to your upstream account.
 
 
 #### Git Prefetching
-Monorepos take a lot of time update, so now git allows incremental prefetching to load changes on command.
-
-To enable maintenance on a local repo
-```
+```bash
 git maintenance start
 ```
+OR
 
-The command above updates .gitconfig to add the lines below.
-```
+```bash
+# .gitconfig
 [maintenance]
     auto = false
     strategy = incremental
 ```
-This will add a cron job to the repository to prefetch every hour.
+A cron job will be created to prefetch per hour by default.
 
-The prefetched references will not be loaded into the project until . 
-To validate that the prefetch is working
-`git for-each-ref | grep prefetch`
+The prefetched references will not be loaded into the project until the changes are merged with `git fetch`. 
 
-|`strategy = incremental`| |
+```bash
+# To get more info on what prefetching does in the background
+git for-each-ref | grep prefetch
+```
+
+##### Default configurations
+|`strategy`| `incremental` |
 |-----|-----|
 |prefetch | hourly|
 |commit-graph | hourly|
 
-Commit graph shows a tree of the commit logs.
-`git log --graph --oneline -10 >/dev/null`
+#### Visualizing the commit tree
+```
+git log --graph --oneline -10 >/dev/null
+```
 
 It is a very expensive feature because objects have to traverse through each commit to draw the tree.
 Prefetching will cache the tree in a hash map and load it when there's a call to draw the graph.
@@ -114,20 +121,28 @@ Prefetching will cache the tree in a hash map and load it when there's a call to
 git config --global fetch.writeCommitGraph true
 ```
 
-## Default Global Configurations
-These configurations are examples of commands that are worth running by default or useful global configs.
-
-```
+### Useful Default Global Configurations
+```bash
 # Reuse Recorded Resolution
 # Git will remember how to resolve merge conflicts.
 git config --global rerere.enabled true
 
-# Automatically creates upstream branch
+# Automatically creates upstream branches
 git config --global push.default current
 
 # Stashes all changes
 git config --global alias.staash 'stash --all'
 
-# bash commands are run as git comands
+# 
 git config --global alias.[alias] ![command]
+```
+
+```bash
+[alias]
+    staash = 'stash --all'
+[rerere]
+    enabled = true
+[push]
+    default = current
+    
 ```
