@@ -71,7 +71,18 @@ git branch --column --sort=-committerdate       #2
 git push --force-with-lease
 ```
 
-
+#### Restore
+```bash
+# Start with a clean copy by `restoring` it or the usual `checkout`
+git restore file.txt
+git checkout file.txt
+```
+OR
+```bash
+# Restore from x time ago
+git restore --source HEAD@{2.hours.ago} file.txt
+```
+It's very useful to jump back to when the project was working with this command.
 
 #### Commits with SSH Key Signatures
 ```bash
