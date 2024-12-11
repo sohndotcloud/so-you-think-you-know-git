@@ -29,8 +29,7 @@ Highlights of git shortcuts by Scott Chacon (YouTube)/More Available in Videos: 
 [user]
   email = example@git.edu
 ```
-The file looks simple: `git config user.email example@git.edu`. That is a command to modify or create the git config file at the starting git directory.
-
+or add it with a command: `git config --global user.email example@git.edu`.
 
 ### Conditional
 
@@ -46,10 +45,10 @@ The file looks simple: `git config user.email example@git.edu`. That is a comman
 |  Command  |  Description  |
 | --------  | :------ |
 | `git blame -L :example:path/to/file`|  Shows commit author for line number of `:example:` |
-| `git blame -w` | Take away changes to spaces in the file |
-| `git log -w` | Take away changes to spaces in the logs|
+| `git blame -w` | Ignore changes to spacing in the file |
+| `git log -w` | Ignore changes to spaces in the logs |
 | `git log -p -S --debug` | Reduces the list to commits with message `--debug` |
-| `git diff --word-diff` | Shows changes per word instead of lines |
+| `git diff --word-diff` | Shows word count instead of lines changed |
 
 ### New Commands
 
@@ -84,7 +83,7 @@ OR
 # Restore from x time ago
 git restore --source HEAD@{2.hours.ago} file.txt
 ```
-It's very useful to jump back to when the project was working with this command.
+It's very useful to jump to when the project was working with this command.
 
 #### Commits with SSH Key Signatures
 ```bash
@@ -93,7 +92,6 @@ git config gpg.format ssh
 git config user.signingkey ~/.ssh/
 ```
 Remember to add the public key to your upstream account.
-
 
 #### Git Prefetching
 ```bash
